@@ -13,13 +13,13 @@ public class AccountController : ControllerBase {
         _accountService = accountService;
     }
 
-    [HttpGet("/Usernames/{id}")]
+    [HttpGet("Usernames/{id}")]
     public async Task<IActionResult> GetUsername(Guid id) {
         string? username = await _accountService.GetUsername(id);
         return username is null ? NotFound() : Ok(username);
     }
 
-    [HttpPost("/Login")]
+    [HttpPost("Login")]
     public async Task<IActionResult> Login([Required] string username, [Required] [FromBody] string hexHash) {
         Tuple<AccountActionResult, Guid> outcome = await _accountService.Login(username, hexHash);
 
@@ -34,7 +34,7 @@ public class AccountController : ControllerBase {
         return Ok(outcome.Item2);
     }
 
-    [HttpPost("/Create")]
+    [HttpPost("Create")]
     public async Task<IActionResult> Create([Required] string username, [Required] [FromBody] string hexHash) {
         AccountActionResult outcome = await _accountService.Create(username, hexHash);
         if (0 > outcome) {
@@ -56,7 +56,7 @@ public class AccountController : ControllerBase {
 
         return Ok();
     }
-    [HttpPost("/Logout")]
+    [HttpPost("Logout")]
     public async Task<IActionResult> Logout([Required] Guid accountId) {
         bool outcome = await _accountService.Logout(accountId);
         return outcome ? Ok("Successfully logged out user.") : NotFound("No online users found with matching account ID.");

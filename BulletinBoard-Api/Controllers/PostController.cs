@@ -22,20 +22,20 @@ public class PostController : ControllerBase {
         return Ok(await _postService.GetAllPosts());
     }
 
-    [HttpGet("/ByAuthor")]
+    [HttpGet("ByAuthor")]
     public async Task<IActionResult> GetByAuthorId(Guid id) {
         IEnumerable<Post>? authoredPosts = await _postService.GetPostsByAuthor(id);
         return authoredPosts is null ? NotFound() : Ok(authoredPosts);
     }
 
-    [HttpGet("/{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetPostById(Guid id) {
         Post? post = await _postService.GetPostById(id);
 
         return post is null ? NotFound() : Ok(post);
     }
 
-    [HttpPost("/CreateNew")]
+    [HttpPost("CreateNew")]
     public async Task<IActionResult> PutNewPost([Required] [FromBody] string[] titleAndBody, [Required] Guid authorId) {
         if (titleAndBody.Length!=2)
             return BadRequest("Malformed request body. Request body must have two-string array: {Title, Body}.");
