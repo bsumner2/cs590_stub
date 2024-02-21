@@ -35,7 +35,7 @@ public class PostController : ControllerBase {
         return post is null ? NotFound() : Ok(post);
     }
 
-    [HttpPost("CreateNew")]
+    [HttpPost("Create")]
     public async Task<IActionResult> PutNewPost([Required] [FromBody] string[] titleAndBody, [Required] Guid authorId) {
         if (titleAndBody.Length!=2)
             return BadRequest("Malformed request body. Request body must have two-string array: {Title, Body}.");
