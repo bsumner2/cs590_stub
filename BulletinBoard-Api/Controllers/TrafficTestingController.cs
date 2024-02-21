@@ -14,8 +14,7 @@ public class TrafficTestingController : ControllerBase {
 
     [HttpGet("Sieve")]
     public async Task<IActionResult> Sieve(int limit) {
-        return Ok(await _testingService.SeiveOfEratosthenese(limit));
-        
+        return Ok(await _testingService.SieveOfEratosthenese(limit));       
     }
 
     

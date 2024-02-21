@@ -4,7 +4,7 @@ public class TrafficTestingService : ITrafficTestingService {
     
     
 
-    public async Task<IEnumerable<int>> SeiveOfEratosthenese(int upperLim) {
+    public async Task<IEnumerable<int>> SieveOfEratosthenese(int upperLim) {
         bool[] isPrime = new bool[upperLim+1];
         SortedSet<int> ret = new();
         await Task.Run(()=>{
