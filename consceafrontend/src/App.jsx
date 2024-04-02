@@ -9,7 +9,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <div>{Sieve}</div>
+          <div>{Sieve()}</div>
           <div>Hey!</div>
         </header>
         

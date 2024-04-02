@@ -5,7 +5,7 @@ const UserList = ( ) => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        axios.get('https://localhost:3000/Account')
+        axios.get('http://localhost:5000/Account')
             .then(response => setUsers(response.data))
             .catch(error => console.error('Error fetching users:', error))
     }, [])

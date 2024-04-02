@@ -1,5 +1,6 @@
 using Conscea_Api.Data;
 using Conscea_Api.Services;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace Conscea_Api;
@@ -8,18 +9,24 @@ class Program {
         public static void Main(String[] args) {    
         var builder = WebApplication.CreateBuilder(args);
 
-        string boardAllowSpecificOrigins = "_boardAllowSpecificOrigins";
+        var ConsceaAllowSpecificOrigins = "_consceaAllowSpecificOrigins";
+
+        var ConsceaAllowAnyOrigins = "_consceaAllowAnyOrigins";
 
         builder.Services.AddCors(options =>
-        {
-            options.AddPolicy(name: boardAllowSpecificOrigins, policy => {
+        {/*
+            options.AddPolicy(name: consceaAllowSpecificOrigins, policy => {
                 policy.WithOrigins(
                     builder.Configuration.GetValue<string[]>("AllowedOrigins") 
-                            ?? (new string[1] {"https://localhost:7261"}));
+                            ?? (new string[1] {"http://localhost:3000"}));
                 // Additional policy change, allows any origin to make 
                 // state-altering http req's like POST, PUT, etc
                 policy.AllowAnyHeader();
-                
+            });*/
+            options.AddPolicy(name: ConsceaAllowAnyOrigins, policy=> {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyMethod();
+                policy.AllowAnyHeader();
             });
         });
 
@@ -50,6 +57,7 @@ class Program {
             app.UseSwaggerUI();
         }
         
+        app.UseCors(ConsceaAllowAnyOrigins);
     
         app.UseHttpsRedirection();
     

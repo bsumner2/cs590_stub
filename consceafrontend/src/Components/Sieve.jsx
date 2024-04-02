@@ -7,15 +7,15 @@ const Sieve = ( ) => {
     const [limit, setLimit] = useState([])
 
     useEffect(() => {
-        axios.get('https://localhost:3000/Sieve')
-            .then(response => setLimit(response.data))
+        axios.get('http://localhost:5000/TrafficTesting/Sieve?limit=200')
+            .then(response => { console.log(response.data); setLimit(response.data); })
             .catch(error => console.error('Error fetching users:', error))
     }, [])
 
     return (
         <div>
             {/* Display Sieve Test */}
-            {limit}
+          {limit}
         </div>
     )
 }
