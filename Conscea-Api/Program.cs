@@ -14,20 +14,23 @@ class Program {
         var ConsceaAllowAnyOrigins = "_consceaAllowAnyOrigins";
 
         builder.Services.AddCors(options =>
-        {/*
-            options.AddPolicy(name: consceaAllowSpecificOrigins, policy => {
-                policy.WithOrigins(
-                    builder.Configuration.GetValue<string[]>("AllowedOrigins") 
-                            ?? (new string[1] {"http://localhost:3000"}));
-                // Additional policy change, allows any origin to make 
-                // state-altering http req's like POST, PUT, etc
-                policy.AllowAnyHeader();
-            });*/
-            options.AddPolicy(name: ConsceaAllowAnyOrigins, policy=> {
-                policy.AllowAnyOrigin();
-                policy.AllowAnyMethod();
-                policy.AllowAnyHeader();
-            });
+        {   
+            if (!app.Environment.IsDevelopment()) {
+                options.AddPolicy(name: consceaAllowSpecificOrigins, policy => {
+                    policy.WithOrigins(
+                        builder.Configuration.GetValue<string[]>("AllowedOrigins") 
+                                ?? (new string[1] {"http://localhost:3000"}));
+                    // Additional policy change, allows any origin to make 
+                    // state-altering http req's like POST, PUT, etc
+                    policy.AllowAnyHeader();
+                });
+            } else {
+                options.AddPolicy(name: ConsceaAllowAnyOrigins, policy=> {
+                    policy.AllowAnyOrigin();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                });
+            }
         });
 
         builder.Services.AddDbContext<ConsceaContext>((
