@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const UserList = ( ) => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('apiEndpoint')
-            .then(response => response.json())
-            .then(data => setUsers(data))
+        axios.get('/Account')
+            .then(response => setUsers(response.data))
             .catch(error => console.error('Error fetching users:', error))
     }, [])
 
@@ -20,3 +20,4 @@ const UserList = ( ) => {
     )
 }
 
+export default UserList
