@@ -1,8 +1,8 @@
-using BulletinBoard_Api.Data;
-using BulletinBoard_Api.Services;
+using Conscea_Api.Data;
+using Conscea_Api.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace BulletinBoard_Api;
+namespace Conscea_Api;
     
 class Program {
         public static void Main(String[] args) {    
@@ -23,8 +23,8 @@ class Program {
             });
         });
 
-        builder.Services.AddDbContext<BulletinBoardContext>((
-            opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("BulletinBoardCtx"))));
+        builder.Services.AddDbContext<ConsceaContext>((
+            opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("ConsceaDB"))));
 
         // Add services to the container.
         
@@ -35,7 +35,6 @@ class Program {
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddScoped<IPostService, PostService>();
         builder.Services.AddScoped<IAccountService, AccountService>();
         
         // Make transient so that traffic testing client ellicits as much

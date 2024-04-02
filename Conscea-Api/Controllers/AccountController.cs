@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using BulletinBoard_Api.Models;
-using BulletinBoard_Api.Services;
+using Conscea_Api.Models;
+using Conscea_Api.Models.DTOs;
+using Conscea_Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulletinBoard_Api.Controllers;
+namespace Conscea_Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -60,6 +61,13 @@ public class AccountController : ControllerBase {
     public async Task<IActionResult> Logout([Required] Guid accountId) {
         bool outcome = await _accountService.Logout(accountId);
         return outcome ? Ok("Successfully logged out user.") : NotFound("No online users found with matching account ID.");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll() {
+        IEnumerable<AccountEntryDTO>? ret = await _accountService.GetAll();
+        return ret is not null ? Ok(ret) : NotFound("This should never happen.");
+
     }
 
 

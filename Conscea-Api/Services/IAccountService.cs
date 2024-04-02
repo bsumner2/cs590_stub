@@ -1,7 +1,8 @@
-using BulletinBoard_Api.Data;
-using BulletinBoard_Api.Models;
+using Conscea_Api.Data;
+using Conscea_Api.Models;
+using Conscea_Api.Models.DTOs;
 
-namespace BulletinBoard_Api.Services;
+namespace Conscea_Api.Services;
 
 public interface IAccountService {
 
@@ -11,6 +12,8 @@ public interface IAccountService {
     public Task<Tuple<AccountActionResult, Guid>> Login(string username, string digestHexString);
 
     public Task<bool> Logout(Guid accId);
+
+    public Task<IEnumerable<AccountEntryDTO>?> GetAll();
 
 
 

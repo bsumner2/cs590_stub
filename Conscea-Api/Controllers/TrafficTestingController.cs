@@ -1,7 +1,7 @@
-using BulletinBoard_Api.Services;
+using Conscea_Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulletinBoard_Api.Controllers;
+namespace Conscea_Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
