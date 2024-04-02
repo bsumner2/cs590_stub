@@ -1,18 +1,19 @@
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
-using BulletinBoard_Api.Data;
-using BulletinBoard_Api.Models;
+using Conscea_Api.Data;
+using Conscea_Api.Models;
+using Conscea_Api.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BulletinBoard_Api.Services;
+namespace Conscea_Api.Services;
 
 public class AccountService : IAccountService
 {
 
-    private readonly BulletinBoardContext _ctx;
+    private readonly ConsceaContext _ctx;
 
-    public AccountService(BulletinBoardContext ctx) { _ctx = ctx; }
+    public AccountService(ConsceaContext ctx) { _ctx = ctx; }
     public async Task<AccountActionResult> Create(string username, string digestHexString)
     {
 
@@ -57,6 +58,13 @@ public class AccountService : IAccountService
         return acc.Username;
         
     }
+
+    public async Task<IEnumerable<AccountEntryDTO>?> GetAll() {
+        IEnumerable<AccountEntryDTO> ret = await Task.Run(() => _ctx.Account.Select( user =>
+            new AccountEntryDTO {Id = user.Id, username = user.Username}));
+        return ret;
+    }
+
     private static bool PassMatch(byte[] a, byte[] b) {
         if ((b.Length != 32) || (a.Length != b.Length))
             return false;

@@ -1,4 +1,4 @@
-namespace BulletinBoard_Api.Services;
+namespace Conscea_Api.Services;
 
 public class TrafficTestingService : ITrafficTestingService {
     

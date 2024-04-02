@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BulletinBoard_Api.Models;
+namespace Conscea_Api.Models;
 
 public class Account {
 
