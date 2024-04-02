@@ -16,6 +16,7 @@ const UserList = ( ) => {
             {users.map(user => (
                 <div key={user.id}>{user.name}</div>
             ))}
+            <div>Hey!</div>
         </div>
     )
 }
