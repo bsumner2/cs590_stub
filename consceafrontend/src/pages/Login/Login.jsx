@@ -1,17 +1,30 @@
 import './Login.css'
-import UserList from '../../Components/UserList'
-import Sieve from '../../Components/Sieve.jsx'
 
-function Login() {
+export default function Login() {
   return (
-    <main>
-      <div className="Login">
-        <div>{Sieve()}</div>
-        <div>Hey!</div>
-        <div>{UserList}</div>
-      </div>
-    </main>
-  );
-}
+    <body>
+        <h1>Certificate Site Login</h1>
 
-export default Login
+        <form>
+          <div class="formSegment">
+            <label for="username"> Username </label>
+            <input id="username"></input>
+          </div>
+          <div class="formSegment">
+            <label for="password"> Password </label>
+            <input id="password"></input>
+          </div>
+          <button
+            class="login"
+            type="submit"
+            id="submit_login" >
+            Login
+          </button>
+        </form>
+        <button class="forgot_pw">
+          Forgot Password?
+        </button>
+        
+    </body>
+  )
+}

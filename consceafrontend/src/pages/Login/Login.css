@@ -1,5 +1,57 @@
-.Login {
-    background-color: #282c34;
+body {
+    background-color: #e6e7e9;
+    text-align: center;
+    font-size:x-large;
+}
+
+h1 {
+    font-weight:400;
+    margin-top:10vh;
+    margin-bottom: 4vh;
+}
+
+h4 {
+    font-weight: lighter;
+}
+
+.formSegment {
+    margin-bottom: 4vh;
+}
+
+input {
+    margin-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: large;
+    border:none;
+}
+
+input:focus {
+    border: 3px solid #0eaddc;
+    outline: none;
+}
+
+button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #0b75b0;
+    color: #ffffff;
+    font-size:large;
+    height:50px;
+    width:250px;
+    letter-spacing: .5px;
+    border-radius: 15px 60px;
+    border:none;
+}
+
+button:hover {
+    cursor:pointer;
+    background-color: #0eaddc;
+}
+
+.login {
+    margin-bottom: 4vh;
 }
 
 /* .App {
