@@ -14,7 +14,8 @@ class Program {
         var ConsceaAllowAnyOrigins = "_consceaAllowAnyOrigins";
 
         builder.Services.AddCors(options =>
-        {   
+        {
+            // Set up both production and development env policies now (...*)
             options.AddPolicy(name: ConsceaAllowSpecificOrigins, policy => {
                 policy.WithOrigins(
                     builder.Configuration.GetValue<string[]>("AllowedOrigins") 
@@ -52,16 +53,17 @@ class Program {
         var app = builder.Build();
         
         // Configure the HTTP request pipeline.
+        
         if (app.Environment.IsDevelopment())
         {
+            // (...*): and then choose correct policy based on what app.Environment.IsDevelopment() returns later
             app.UseCors(ConsceaAllowAnyOrigins);
-
 
             app.UseSwagger();
             app.UseSwaggerUI();
+        } else {
+            app.UseCors(ConsceaAllowSpecificOrigins);
         }
-        
-        app.UseCors(ConsceaAllowSpecificOrigins);
     
         app.UseHttpsRedirection();
     
