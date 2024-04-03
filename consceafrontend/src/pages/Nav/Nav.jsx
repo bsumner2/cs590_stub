@@ -4,10 +4,16 @@ import { Outlet, Link } from "react-router-dom";
 function Nav() {
     return (
         <>
-            <nav>
-                <ul>
+            <div class="topbar">  
+            </div>
+            
+            <div class="bottombar">
+            <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link class="a" to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link class="a" to="/Dashboard">Dashboard</Link>
                     </li>
                     {/* <li>
                         <Link to="/certs">Certificates</Link>
@@ -16,8 +22,7 @@ function Nav() {
                         <Link to="/profile">Profile</Link>
                     </li> */}
                 </ul>
-            </nav>
-
+            </div>
             <Outlet />
         </>
     )

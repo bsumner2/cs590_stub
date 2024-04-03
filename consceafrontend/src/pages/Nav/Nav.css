@@ -1,0 +1,39 @@
+.topbar {
+    height:11vh;
+    background-color: #0b75b0;
+}
+
+.bottombar {
+    height:5vh;
+    background-color: #0eaddc;
+}
+
+ul {
+    width: 100%;
+    float: left;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    margin-top:-40px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+a:link, a:visited {
+    background-color: #0eaddc;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+  }
+  
+  a:hover, a:active {
+    background-color: #1f0b3d;
+  }

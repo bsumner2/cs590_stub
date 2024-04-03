@@ -3,6 +3,12 @@ import './Login.css'
 export default function Login() {
   return (
     <body>
+      <header>
+        <div class="topbar"></div>
+        <div class="bottombar"></div>
+      </header>
+
+      <container class="content">
         <h1>Certificate Site Login</h1>
 
         <form>
@@ -24,6 +30,12 @@ export default function Login() {
         <button class="forgot_pw">
           Forgot Password?
         </button>
+        </container>
+
+        <footer>
+          <div class="bottombar"></div>
+          <div class="topbar"></div> 
+        </footer>
         
     </body>
   )

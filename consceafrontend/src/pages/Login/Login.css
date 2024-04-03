@@ -1,12 +1,44 @@
+.topbar {
+  height:11vh;
+  background-color: #0b75b0;
+}
+
+.bottombar {
+  height:5vh;
+  background-color: #0eaddc;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 body {
     background-color: #e6e7e9;
     text-align: center;
     font-size:x-large;
+    min-height: 500px;
 }
 
 h1 {
     font-weight:400;
-    margin-top:10vh;
     margin-bottom: 4vh;
 }
 
@@ -53,43 +85,3 @@ button:hover {
 .login {
     margin-bottom: 4vh;
 }
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
- */

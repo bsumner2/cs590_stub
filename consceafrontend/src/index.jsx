@@ -2,7 +2,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './index.css';
-import Landing from './pages/Landing/Landing.jsx'
 import Login from './pages/Login/Login.jsx'
 import Nav from './pages/Nav/Nav.jsx'
 import Home from './pages/Home/Home.jsx'
@@ -15,13 +14,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+          <Route path="/Login" element={<Login />}/>
         <Route path="/" element={<Nav />}>
           <Route index element={<Home />}/>
           <Route path="*" element={<NoPage />}/>
         </Route>
-        <Route element={<Landing />}>
-          <Route path="/Login" element={<Login />}/>
-        </Route>
+        
       </Routes>
     </BrowserRouter>
   );
