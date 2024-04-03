@@ -14,24 +14,22 @@ class Program {
         var ConsceaAllowAnyOrigins = "_consceaAllowAnyOrigins";
 
         builder.Services.AddCors(options =>
-        {   
-            // if (!app.Environment.IsDevelopment()) {
-            //     options.AddPolicy(name: ConsceaAllowSpecificOrigins, policy => {
-            //         policy.WithOrigins(
-            //             builder.Configuration.GetValue<string[]>("AllowedOrigins") 
-            //                     ?? (new string[1] {"http://localhost:3000"}));
-            //         // Additional policy change, allows any origin to make 
-            //         // state-altering http req's like POST, PUT, etc
-            //         policy.AllowAnyHeader();
-            //     });
-            // } else
-            {
-                options.AddPolicy(name: ConsceaAllowAnyOrigins, policy=> {
-                    policy.AllowAnyOrigin();
-                    policy.AllowAnyMethod();
-                    policy.AllowAnyHeader();
-                });
-            }
+        {
+            // Set up both production and development env policies now (...*)
+            options.AddPolicy(name: ConsceaAllowSpecificOrigins, policy => {
+                policy.WithOrigins(
+                    builder.Configuration.GetValue<string[]>("AllowedOrigins") 
+                            ?? (new string[1] {"http://localhost:3000"}));
+                // Additional policy change, allows any origin to make 
+                // state-altering http req's like POST, PUT, etc
+                policy.AllowAnyHeader();
+            });
+            
+            options.AddPolicy(name: ConsceaAllowAnyOrigins, policy=> {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyMethod();
+                policy.AllowAnyHeader();
+            });
         });
 
         builder.Services.AddDbContext<ConsceaContext>((
@@ -48,20 +46,23 @@ class Program {
 
         builder.Services.AddScoped<IAccountService, AccountService>();
         
-        // Make transient so that traffic testing client ellicits as much
-        // computation demand on the server as possible.
-        builder.Services.AddTransient<ITrafficTestingService, TrafficTestingService>();
+
+        builder.Services.AddScoped<ITrafficTestingService, TrafficTestingService>();
         
         var app = builder.Build();
         
         // Configure the HTTP request pipeline.
+        
         if (app.Environment.IsDevelopment())
         {
+            // (...*): and then choose correct policy based on what app.Environment.IsDevelopment() returns later
+            app.UseCors(ConsceaAllowAnyOrigins);
+
             app.UseSwagger();
             app.UseSwaggerUI();
+        } else {
+            app.UseCors(ConsceaAllowSpecificOrigins);
         }
-        
-        app.UseCors(ConsceaAllowAnyOrigins);
     
         app.UseHttpsRedirection();
     
