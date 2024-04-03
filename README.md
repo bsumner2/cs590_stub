@@ -1,20 +1,35 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+CSCE 590 Final Project - Spring 2024
+
+In partnership with professors @ Capgemini, we built a Programming Certificate organizer.
+
+Our project allows users to upload their certificates, track their status, and keep an eye on soon-to-expire certs.
+It also allows system administrators to view all co-worker certificates, and confirm that their professionals are up to date.
+
+# Team Members
+Ali Firooz
+Burt Sumners
+David Eta
+Nishwa
+Patrick Burroughs
+Supriya
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+To get started:
+- 1 Terminal:
+ - cd into the frontend api folder: "consceafrontend"
+`npm install`
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+To Build the Project:
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+- 2 terminals
+ - Terminal 1:
+ - cd into the backend api folder: "Conscea-Api"
+`dotnet run`
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+ - Terminal 2:
+ - cd into the frontend api folder: "consceafrontend"
+`npm start`
+
+TODO: Describe how to run the tests. 
