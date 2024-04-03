@@ -46,9 +46,8 @@ class Program {
 
         builder.Services.AddScoped<IAccountService, AccountService>();
         
-        // Make transient so that traffic testing client ellicits as much
-        // computation demand on the server as possible.
-        builder.Services.AddTransient<ITrafficTestingService, TrafficTestingService>();
+
+        builder.Services.AddScoped<ITrafficTestingService, TrafficTestingService>();
         
         var app = builder.Build();
         
