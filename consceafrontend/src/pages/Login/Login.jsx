@@ -4,7 +4,9 @@ export default function Login() {
   return (
     <body>
       <header>
-        <div class="topbar"></div>
+        <div class="topbar">
+          <h1 class="logo">Conscea</h1>
+        </div>
         <div class="bottombar"></div>
       </header>
 

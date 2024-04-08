@@ -8,6 +8,17 @@
   background-color: #0eaddc;
 }
 
+.logo {
+  margin-top:0;
+  color:white;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style:oblique;
+  font-weight: bold;
+  letter-spacing: -1.5px;
+  text-align: left;
+  padding: 2vh 30px;
+}
+
 header {
   position: fixed;
   left: 0;
