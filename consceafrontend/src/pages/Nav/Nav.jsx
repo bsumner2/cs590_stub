@@ -15,12 +15,12 @@ function Nav() {
                     <li>
                         <Link class="a" to="/Dashboard">Dashboard</Link>
                     </li>
-                    {/* <li>
-                        <Link to="/certs">Certificates</Link>
+                    <li>
+                        <Link class="a" to="/certs">Certificates</Link>
                     </li>
                     <li>
-                        <Link to="/profile">Profile</Link>
-                    </li> */}
+                        <Link class="a" to="/profile">Profile</Link>
+                    </li>
                 </ul>
             </div>
             <Outlet />

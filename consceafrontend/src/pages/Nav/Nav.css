@@ -16,6 +16,7 @@ ul {
 }
 
 li {
+    letter-spacing: .5px;
     display: inline-block;
     margin-top:-40px;
     padding: 10px 20px;

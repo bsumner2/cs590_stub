@@ -6,6 +6,8 @@ import Login from './pages/Login/Login.jsx'
 import Nav from './pages/Nav/Nav.jsx'
 import Home from './pages/Home/Home.jsx'
 import NoPage from './pages/NoPage/NoPage.jsx'
+import Dashboard from './pages/Dashboard/Dashboard.jsx'
+import Profile from './pages/Profile/Profile.jsx'
 
 import reportWebVitals from './reportWebVitals';
 
@@ -14,10 +16,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/Login" element={<Login />}/>
+
+        <Route path="/Login" element={<Login />}/>
+
         <Route path="/" element={<Nav />}>
+
           <Route index element={<Home />}/>
+          <Route path="Dashboard" element={<Dashboard />}/>
+          <Route path="Profile" element={<Profile />}/>
           <Route path="*" element={<NoPage />}/>
+          
         </Route>
         
       </Routes>
