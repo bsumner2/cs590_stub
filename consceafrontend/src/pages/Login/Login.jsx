@@ -23,13 +23,13 @@ export default function Login() {
             <input id="password"></input>
           </div>
           <button
-            class="login"
+            class="logins"
             type="submit"
             id="submit_login" >
             Login
           </button>
         </form>
-        <button class="forgot_pw">
+        <button class="logins">
           Forgot Password?
         </button>
         </container>
