@@ -7,12 +7,12 @@ Our project allows users to upload their certificates, track their status, and k
 It also allows system administrators to view all co-worker certificates, and confirm that their professionals are up to date.
 
 # Team Members
-Ali Firooz
-Burt Sumners
-David Eta
-Nishwa
-Patrick Burroughs
-Supriya Nayanala
+- Ali Firooz
+- Burt Sumner
+- David Eta
+- Nishwa Tuniki
+- Patrick Burroughs
+- Supriya Nayanala
 
 # Getting Started
 To get started:
