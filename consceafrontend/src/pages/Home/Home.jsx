@@ -1,4 +1,7 @@
 import './Home.css'
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 // Example of a data array that
 // you might receive from an API
@@ -9,7 +12,13 @@ const data = [
 ]
 
 export default function Home() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
+        <>
         <body>
             <h1>Your Certifications</h1>
             
@@ -34,7 +43,24 @@ export default function Home() {
                 })}
             </table>
 
-            <button class="addnew">Add New</button>
+            <button onClick={handleShow} class="addnew">Add New</button>
+            
         </body>
+
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+            <Modal.Footer>
+            <Button onClick={handleClose}>
+                Close
+            </Button>
+            <Button onClick={handleClose}>
+                Save Changes
+            </Button>
+            </Modal.Footer>
+        </Modal>
+        </>
     )
 }
