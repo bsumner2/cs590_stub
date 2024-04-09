@@ -44,42 +44,40 @@ TODO: Describe how to run the tests.
 
 - All attributes with no examples, have the same name in the excel files and thus will take the same values.
  
-- If attribute `CertInfo.validFor` was defined, it overrides the user-defined attribute `CertArchive.expireDate` and sets it to `CertArchive.certifiedDate + CertInfo.validFor`. Otherwise, the user has the option to set their own `CertArchive.expireDate` or not. 
+- If attribute `CertInfo.expire` is set to "True", the user should receive a notification when a certificate expires and ask them to renew it (change the `CertArchive.expireDate`).
 
-
-> TODO: should we keep `CertInfo.validFor`? or is it not worth the hassle?
-
-> TODO: can we use generated GUIDs instead of the `Account.Id` given in excel files?
+> TODO: `CertInfo.expire` **does not** contradict with `CertArchive.expireDate`? So either one expires sooner, the system should prompt the user? Or does the `CertArchive.expireDate` should be set based on the `CertInfo.expire`?
 
 
 ```mermaid
 erDiagram
     Account {
-        Guid            Id PK, FK
+        int             Id PK, FK
         string          firstName
         string          lastName
         string          email UK
         char(10)        phone UK
         char(1)         grade
         string          role
-        string          username UK
+        string(32)      username UK
         varbinary(32)   password
+        bool            isOnline
 
     }
     CertInfo {
-        string      certId PK, FK "eg: AZ-900"
-        string      name UK "eg: MS. Azure AI Fundamentals"
-        string      level
-        string      category
-        string      validFor "validity Duration; formate: yy-mm-dd"
+        string          certId PK, FK "eg: AZ-900"
+        string          name UK "eg: MS. Azure AI Fundamentals"
+        string          level
+        string          category
+        bool            expire "certificate valid for 1 year only?"
     }
     CertArchive {
-        Account        Id PK, FK
-        CertInfo    certId PK, FK
-        date        certifiedDate PK
-        date        expireDate
+        Account         Id PK, FK
+        CertInfo        certId PK, FK
+        date            certifiedDate PK
+        date            expireDate
     }
     
-    Account     }o--|| CertArchive : Have
+    Account  }o--|| CertArchive : Have
     CertInfo }o--|| CertArchive : "Relate To"
 ```
