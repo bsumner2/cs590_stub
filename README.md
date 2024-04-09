@@ -18,7 +18,7 @@ It also allows system administrators to view all co-worker certificates, and con
 To get started:
 - 1 Terminal:
  - cd into the frontend api folder: "consceafrontend"
-`npm install`
+ - `npm install`
 
 # Build and Test
 To Build the Project:
@@ -26,7 +26,7 @@ To Build the Project:
 - 2 terminals
  - Terminal 1:
  - cd into the backend api folder: "Conscea-Api"
-`dotnet run`
+ - `dotnet run`
 
  - Terminal 2:
  - cd into the frontend api folder: "consceafrontend"
