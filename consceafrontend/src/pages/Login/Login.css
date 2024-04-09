@@ -59,7 +59,11 @@ h4 {
 }
 
 .formSegment {
-    margin-bottom: 6vh;
+    margin-bottom: 4vh;
+}
+
+.logininputs {
+  margin-bottom: 6vh;
 }
 
 input {

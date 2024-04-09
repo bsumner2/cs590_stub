@@ -14,21 +14,24 @@ export default function Login() {
         <h1>Certificate Site Login</h1>
 
         <form>
-          <div class="formSegment">
-            <label for="username"> Username </label>
-            <input id="username"></input>
+          <div class="logininputs">
+            <div class="formSegment">
+              <label for="username"> Username </label>
+              <input id="username"></input>
+            </div>
+            <div class="formSegment">
+              <label for="password"> Password </label>
+              <input type="password" id="password"></input>
+            </div>
           </div>
-          <div class="formSegment">
-            <label for="password"> Password </label>
-            <input id="password"></input>
-          </div>
-          <button
-            class="logins"
-            type="submit"
-            id="submit_login" >
-            Login
-          </button>
+            <button
+              class="logins"
+              type="submit"
+              id="submit_login" >
+              Login
+            </button>
         </form>
+        
         <button class="logins">
           Forgot Password?
         </button>
