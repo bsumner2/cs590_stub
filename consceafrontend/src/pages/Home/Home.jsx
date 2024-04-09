@@ -1,4 +1,5 @@
 import './Home.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -21,7 +22,8 @@ export default function Home() {
         <>
         <body>
             <h1>Your Certifications</h1>
-            
+
+            {/* <div class="table-responsive card"> */}
             <table>
                 <tr>
                     <th>Certifications</th>
@@ -42,6 +44,7 @@ export default function Home() {
                     )
                 })}
             </table>
+            {/* </div> */}
 
             <button onClick={handleShow} class="addnew">Add New</button>
             

@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/Login.jsx'
 import Nav from './pages/Nav/Nav.jsx'
 import Home from './pages/Home/Home.jsx'

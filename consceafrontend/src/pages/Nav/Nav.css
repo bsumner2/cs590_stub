@@ -31,7 +31,6 @@ ul {
 li {
     letter-spacing: .5px;
     display: inline-block;
-    margin-top:-40px;
     padding: 10px 20px;
     text-decoration: none;
     font-weight: bold;
@@ -57,6 +56,7 @@ a:link, a:visited {
     margin-right: auto;
     width: 90%;
     border-spacing: 5px 5px;
+    border-collapse:separate; 
 }
 
 th {
@@ -78,8 +78,4 @@ td {
 
     background-color: white;
     color:#1f0b3d;
-}
-
-tr {
-    height: 60px;
 }

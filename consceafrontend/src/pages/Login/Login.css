@@ -50,7 +50,7 @@ body {
 }
 
 h1 {
-    font-weight:400;
+    font-weight:800;
     margin-bottom: 4vh;
 }
 
@@ -59,7 +59,7 @@ h4 {
 }
 
 .formSegment {
-    margin-bottom: 4vh;
+    margin-bottom: 6vh;
 }
 
 input {
@@ -69,7 +69,7 @@ input {
     border-radius: 10px;
     text-align: center;
     font-size: large;
-    border:none;
+    border: 3px solid #e6e7e9;
 }
 
 input:focus {
@@ -87,6 +87,8 @@ input:focus {
     letter-spacing: .5px;
     border-radius: 15px 60px;
     border:none;
+
+    margin-bottom: 4vh;
 }
 
 .logins:hover {
