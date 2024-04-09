@@ -40,17 +40,22 @@ TODO: Describe how to run the tests.
 **Notes:**
 - For the sake of simplicity, all `string` types translate to `VARCHAR(100)` in SQL.
 
-- All attributes with no examples, have the same name in the Excel files and thus will take the same values.
- 
-- If attribute `certInfo.validFor` was defined, it overrides the user defined attribute `certArchive.expireDate` and sets it to `certArchive.certifiedDate + certInfo.validFor`. Otherwise the user have the option to set their own `certArchive.expireDate` or not.
+- Using the `Account` name instead of `User`, to keep further changes in the backend to a minimum.
 
-- TODO: can we use generated GUID instead of `user.userID`?
+- All attributes with no examples, have the same name in the excel files and thus will take the same values.
+ 
+- If attribute `CertInfo.validFor` was defined, it overrides the user-defined attribute `CertArchive.expireDate` and sets it to `CertArchive.certifiedDate + CertInfo.validFor`. Otherwise, the user has the option to set their own `CertArchive.expireDate` or not. 
+
+
+> TODO: should we keep `CertInfo.validFor`? or is it not worth the hassle?
+
+> TODO: can we use generated GUIDs instead of the `Account.Id` given in excel files?
 
 
 ```mermaid
 erDiagram
-    user {
-        int             userID PK, FK
+    Account {
+        Guid            Id PK, FK
         string          firstName
         string          lastName
         string          email UK
@@ -59,21 +64,22 @@ erDiagram
         string          role
         string          username UK
         varbinary(32)   password
+
     }
-    certInfo {
-        string      certID PK, FK "eg: AZ-900"
+    CertInfo {
+        string      certId PK, FK "eg: AZ-900"
         string      name UK "eg: MS. Azure AI Fundamentals"
         string      level
         string      category
         string      validFor "validity Duration; formate: yy-mm-dd"
     }
-    certArchive {
-        user        userID PK, FK
-        certInfo    certID PK, FK
+    CertArchive {
+        Account        Id PK, FK
+        CertInfo    certId PK, FK
         date        certifiedDate PK
         date        expireDate
     }
     
-    user     }o--|| certArchive : Have
-    certInfo }o--|| certArchive : "Relate To"
+    Account     }o--|| CertArchive : Have
+    CertInfo }o--|| CertArchive : "Relate To"
 ```
