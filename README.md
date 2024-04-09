@@ -33,3 +33,43 @@ To Build the Project:
 `npm start`
 
 TODO: Describe how to run the tests. 
+
+
+# DB Design
+
+>**Notes:**
+> - For the sake of simplicity, all `string` types translate to `VARCHAR(100)` in SQL.
+> 
+> - If attribute `certInfo.validFor` was defined, it overrides the user defined attribute `certArchive.expireDate` and sets it to `certArchive.certifiedDate + certInfo.validFor`. Otherwise the user have the option to set their own `certArchive.expireDate` or not.
+
+
+```mermaid
+erDiagram
+    user {
+        int             userID PK, FK  "TODO: can we use generated GUID instead?"
+        string          firstName
+        string          lastName
+        string          email UK
+        char(10)        phone UK
+        char(1)         grade
+        string          role
+        string          username UK
+        varbinary(32)   password
+    }
+    certInfo {
+        string      certID PK, FK "eg: AZ-900"
+        string      name UK "eg: MS. Azure AI Fundamentals"
+        string      level
+        string      category
+        string      validFor "validity Duration; formate: yy-mm-dd"
+    }
+    certArchive {
+        user        userID PK, FK
+        certInfo    certID PK, FK
+        date        certifiedDate PK
+        date        expireDate
+    }
+    
+    user     }o--|| certArchive : Have
+    certInfo }o--|| certArchive : "Relate To"
+```
