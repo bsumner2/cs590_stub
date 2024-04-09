@@ -12,7 +12,7 @@ Burt Sumners
 David Eta
 Nishwa
 Patrick Burroughs
-Supriya
+Supriya Nayanala
 
 # Getting Started
 To get started:
