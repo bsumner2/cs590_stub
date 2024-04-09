@@ -18,12 +18,7 @@ export default function Home() {
     const [showModify, setShowModify] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
 
-    const [modData, set_Mod_Data] = useState({
-        certificate: '',
-        certifcationDate: '',
-        status: '',
-        expiryDate: '',
-    }); 
+    const [modCert, setModCert] = useState(new Date()); 
 
     const handleCloseAdd = () => setShowAdd(false);
     const handleShowAdd = () => setShowAdd(true);
@@ -32,13 +27,13 @@ export default function Home() {
     const handleCloseDelete = () => setShowDelete(false);
     const handleShowDelete = () => setShowDelete(true);
 
-    const modHandler = (e) => {
-        console.log(e);
-        set_Mod_Data( prevCert => {
+    const modHandler = (name, value) => {
+        console.log(name, value);
+        setModCert( prevCert => {
             console.log(prevCert);
-            return { ...prevCert, [e.target]: e.target}
+            return { ...prevCert, [name.target.name]: value.target.value}
         })
-        console.log(modData);
+        console.log(modCert);
         handleShowModify();
      }
 
@@ -61,7 +56,7 @@ export default function Home() {
                             <td>{val.certifcationDate}</td>
                             <td>{val.status}</td>
                             <td>{val.expiryDate}</td>
-                            <td class="btns"><button onClick={ () => modHandler(val)} class="certCRUD">Modify</button></td>
+                            <td class="btns"><button onClick={ () => modHandler("name", "value")} name={val} value={val} class="certCRUD">Modify</button></td>
                             <td class="btns"><button onClick={handleShowDelete} class="certCRUD">Delete</button></td>
                         </tr>
                     )
