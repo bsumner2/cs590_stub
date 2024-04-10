@@ -1,0 +1,7 @@
+The two classes `AccountEntryDTO` and `Account`, serve different purposes in the context of an application, particularly when using Entity Framework Core for data access.
+
+1. `Account` class: This class is an Entity class. It directly represents a table in your database. Each instance of this class corresponds to a row in the table. The properties of the class represent the columns of the table. The attributes like `[Required]`, `[Key]`, `[StringLength(32)]`, and `[Column(TypeName = "varbinary(32)")]` are Data Annotations that provide EF Core with metadata about the database column associated with a property. For example, `[Required]` indicates that the column cannot have NULL values, and `[Key]` designates the property as the primary key.
+
+2. `AccountEntryDTO` class: This class is a Data Transfer Object (DTO). DTOs are used to structure the data that gets passed between parts of your application, particularly between the API layer and the client. They allow you to control exactly what data you want to expose. In this case, `AccountEntryDTO` only includes `username` and `Id`, and not the `ShaDigest` or `IsOnline` properties. This can be useful for operations where you don't want to load or expose the entire entity.
+
+The reason for having these two separate classes is to separate concerns. The `Account` entity is concerned with the structure of your data in the database, while the `AccountEntryDTO` is concerned with what data gets transferred in specific operations. This separation can make your code cleaner, easier to maintain, and more secure.
