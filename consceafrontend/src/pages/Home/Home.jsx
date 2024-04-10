@@ -1,6 +1,6 @@
 import './Home.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Certificate from "../../Components/Certificate.jsx"
+import Select from 'react-select'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -8,17 +8,32 @@ import Modal from 'react-bootstrap/Modal';
 // Example of a data array that
 // you might receive from an API
 const data = [
-    { certification: "AZ-900: A Guide to becoming a professional", certifcationDate: "06/24/2011", status:"Permanent", expiryDate:"Never"},
-    { certification: "AZ-1400", certifcationDate: "11/13/2023", status:"Ok", expiryDate:"11/13/2024"},
-    { certification: "AZ-2400", certifcationDate: "02/01/2024", status:"Ok", expiryDate:"02/01/2024"},
+    { certification: "AZ-900: A Guide to becoming a professional", id: "244322", certifcationDate: "06/24/2011", status:"Permanent", expiryDate:"12/31/2999"},
+    { certification: "AZ-1400", id: "243352", certifcationDate: "11/13/2023", status:"Ok", expiryDate:"11/13/2024"},
+    { certification: "AZ-2400", id: "345534", certifcationDate: "02/01/2024", status:"Ok", expiryDate:"02/01/2025"},
 ]
+
+const certs = [
+    { id: "23454", desc: "AZ-900: A Guide to becoming a professional" },
+    { id: "24532", desc: "AZ-1400" },
+    { id: "26421", desc: "AZ-2400" },
+]
+
+const certOptions = certs.map((certInfo) => {
+    return {
+        value: certInfo.id,
+        label: certInfo.desc,
+    }
+})
 
 export default function Home() {
     const [showAdd, setShowAdd] = useState(false);
     const [showModify, setShowModify] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
 
-    const [modCert, setModCert] = useState(new Date()); 
+    const [modDate, setModDate] = useState(new Date().toLocaleDateString());
+    const [modExpiry, setModExpiry] = useState(new Date().toLocaleDateString());
+    const [modDefaultOption, setModDefaultOption] = useState(0); 
 
     const handleCloseAdd = () => setShowAdd(false);
     const handleShowAdd = () => setShowAdd(true);
@@ -27,14 +42,11 @@ export default function Home() {
     const handleCloseDelete = () => setShowDelete(false);
     const handleShowDelete = () => setShowDelete(true);
 
-    const modHandler = (name, value) => {
-        console.log(name, value);
-        setModCert( prevCert => {
-            console.log(prevCert);
-            return { ...prevCert, [name.target.name]: value.target.value}
-        })
-        console.log(modCert);
-        handleShowModify();
+    const modHandler = (date, exp, index) => {
+        setModDefaultOption(index)
+        setModDate(new Date(date).toISOString().slice(0,10))
+        setModExpiry(new Date(exp).toISOString().slice(0,10))
+        handleShowModify()
      }
 
     return (
@@ -56,7 +68,7 @@ export default function Home() {
                             <td>{val.certifcationDate}</td>
                             <td>{val.status}</td>
                             <td>{val.expiryDate}</td>
-                            <td class="btns"><button onClick={ () => modHandler("name", "value")} name={val} value={val} class="certCRUD">Modify</button></td>
+                            <td class="btns"><button onClick={ () => modHandler(val.certifcationDate, val.expiryDate, key)} class="certCRUD">Modify</button></td>
                             <td class="btns"><button onClick={handleShowDelete} class="certCRUD">Delete</button></td>
                         </tr>
                     )
@@ -78,7 +90,7 @@ export default function Home() {
                 <div class="addnewcert">
                     <div class="formSegment">
                         <label for="certificate"> Certificate </label>
-                        <select id="certificate"></select>
+                        <Select options={certOptions} isSearchable id="certificate"></Select>
                     </div>
                     <div class="formSegment">
                         <label for="certDate"> Certifcate Date </label>
@@ -111,15 +123,15 @@ export default function Home() {
                 <div class="modifycert">
                     <div class="formSegment">
                         <label for="certificate"> Certificate </label>
-                        <select id="certificate"></select>
+                        <Select options={certOptions} defaultValue={certOptions[modDefaultOption]} isSearchable id="certificate"></Select>
                     </div>
                     <div class="formSegment">
                         <label for="certDate"> Certifcate Date </label>
-                        <input type="date" id="certDate"></input>
+                        <input type="date" id="certDate" value={modDate} onChange={e => setModDate(e.target.value)}></input>
                     </div>
                     <div class="formSegment">
                         <label for="certExpiry"> Expiry Date </label>
-                        <input type="date" id="certExpiry"></input>
+                        <input type="date" id="certExpiry" value={modExpiry} onChange={e => setModExpiry(e.target.value)}></input>
                     </div>
                 </div>
             </form>
